@@ -24,7 +24,7 @@ async function runOrchestrator() {
 }
 
 function generateThemeSwitch(chosenLibrary) {
-  const components = ['Sidebar', 'Button', 'Table'];
+  const components = ['Sidebar', 'Button', 'Table', 'Input', 'Form', 'Card'];
 
   let fileContent = '// AUTO-GENERATED THEME INTERFACE - DO NOT EDIT\n\n';
 
