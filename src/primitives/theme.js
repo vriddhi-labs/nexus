@@ -1,8 +1,8 @@
 // AUTO-GENERATED THEME INTERFACE - DO NOT EDIT
 
-export { Sidebar } from "./shadcn/Sidebar";
-export { Button } from "./shadcn/Button";
-export { Table } from "./shadcn/Table";
-export * from "./shadcn/Dialog";
-export * from "./shadcn/Dropdown";
-export * from "./shadcn/Tabs";
+export { Sidebar } from "./antd/Sidebar";
+export { Button } from "./antd/Button";
+export { Table } from "./antd/Table";
+export * from "./antd/Modal";
+export * from "./antd/Dropdown";
+export * from "./antd/Tabs";
