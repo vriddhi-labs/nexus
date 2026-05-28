@@ -1,5 +1,5 @@
 export default {
-  uiLibrary: 'antd',
+  uiLibrary: 'shadcn',
   plugins: [
     './plugins/inventory-plugin'
   ]
