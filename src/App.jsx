@@ -23,7 +23,7 @@ import {
   TabsDisabled,
 } from "./primitives";
 
-
+import { ShadcnSidebar, ShadcnButton, ShadcnTable, ShadcnInput, ShadcnForm, ShadcnCard, AntdSidebar, AntdButton, AntdTable, AntdInput, AntdForm, AntdCard } from "./primitives";
 
 const Input = React.forwardRef(
   ({ className = "", type = "text", ...props }, ref) => (
@@ -36,11 +36,21 @@ const Input = React.forwardRef(
   ),
 );
 Input.displayName = "Input";
+// Import specific primitives to enable live switching in the showcase
+// import { ShadcnSidebar, ShadcnButton, ShadcnTable, ShadcnInput, ShadcnForm, ShadcnCard, AntdSidebar, AntdButton, AntdTable, AntdInput, AntdForm, AntdCard } from "./primitives";
 
 export default function App() {
   const [activeLibrary, setActiveLibrary] = useState("shadcn");
   const [activeTheme, setActiveTheme] = useState("light");
   const [activeSidebarItem, setActiveSidebarItem] = useState("components");
+
+  // Dynamically select components based on activeLibrary
+  const Button = activeLibrary === "antd" ? AntdButton : ShadcnButton;
+  const Table = activeLibrary === "antd" ? AntdTable : ShadcnTable;
+  const Sidebar = activeLibrary === "antd" ? AntdSidebar : ShadcnSidebar;
+  const Input = activeLibrary === "antd" ? AntdInput : ShadcnInput;
+  const Form = activeLibrary === "antd" ? AntdForm : ShadcnForm;
+  const Card = activeLibrary === "antd" ? AntdCard : ShadcnCard;
 
   // Shared mock data for the tables
   const tableColumns = [
@@ -199,6 +209,78 @@ export default function App() {
 
           <div className="p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
             <Table data={tableData} columns={tableColumns} />
+          </div>
+        </section>
+
+        {/* Input Section */}
+        <section>
+          <div className="mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Terminal className="w-5 h-5 text-indigo-500" />
+              Inputs
+            </h2>
+            <p className="text-slate-500 text-sm mt-1">
+              Standalone input field for data entry.
+            </p>
+          </div>
+
+          <div className="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm flex flex-col gap-8 overflow-hidden relative">
+            <div className="w-full max-w-sm">
+              <label className="text-sm font-medium mb-1 block">Email Address</label>
+              <Input type="email" placeholder="Enter your email" />
+            </div>
+          </div>
+        </section>
+
+        {/* Form Section */}
+        <section>
+          <div className="mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Layers className="w-5 h-5 text-indigo-500" />
+              Forms
+            </h2>
+            <p className="text-slate-500 text-sm mt-1">
+              Form container managing layout and validation states.
+            </p>
+          </div>
+
+          <div className="p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+            <Form layout="vertical" className="space-y-4 max-w-md">
+              <div>
+                <label className="text-sm font-medium mb-1 block">Username</label>
+                <Input placeholder="Enter your username" />
+              </div>
+              <div>
+                <label className="text-sm font-medium mb-1 block">Password</label>
+                <Input type="password" placeholder="Enter your password" />
+              </div>
+              <Button variant="primary" className="w-full mt-4">Sign In</Button>
+            </Form>
+          </div>
+        </section>
+
+        {/* Card Section */}
+        <section>
+          <div className="mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Box className="w-5 h-5 text-indigo-500" />
+              Cards
+            </h2>
+            <p className="text-slate-500 text-sm mt-1">
+              Content container with standard padding and borders.
+            </p>
+          </div>
+
+          <div className="flex gap-8">
+            <div className="w-full max-w-sm">
+              <Card title="Project Summary" className="p-6">
+                <h3 className="font-semibold text-lg mb-2">Nexus Framework</h3>
+                <p className="text-sm text-slate-500 mb-4">
+                  A high-performance build-time orchestrated dashboard engine.
+                </p>
+                <Button variant="secondary" size="small">View Details</Button>
+              </Card>
+            </div>
           </div>
         </section>
 

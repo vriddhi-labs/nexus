@@ -26,3 +26,5 @@ export {
   TabsDisabled as AntdTabsDisabled,
 } from "./antd";
 
+export { Input as ShadcnInput, Form as ShadcnForm, Card as ShadcnCard } from "./shadcn";
+export { Input as AntdInput, Form as AntdForm, Card as AntdCard } from "./antd";
