@@ -8,8 +8,36 @@ import {
   Terminal,
 } from "lucide-react";
 
-// Import specific primitives to enable live switching in the showcase
+// Import generic primitives from the root primitives index
+import {
+  Sidebar,
+  Button,
+  Table,
+  ProfileDialog,
+  StickyFooterDialog,
+  DialogCloseButton,
+  DialogNoCloseButton,
+  DropDown,
+  TabsLine,
+  TabsVertical,
+  TabsDisabled,
+} from "./primitives";
+
 import { ShadcnSidebar, ShadcnButton, ShadcnTable, ShadcnInput, ShadcnForm, ShadcnCard, AntdSidebar, AntdButton, AntdTable, AntdInput, AntdForm, AntdCard } from "./primitives";
+
+const Input = React.forwardRef(
+  ({ className = "", type = "text", ...props }, ref) => (
+    <input
+      type={type}
+      ref={ref}
+      className={`flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-800 dark:bg-slate-950 dark:placeholder:text-slate-400 ${className}`}
+      {...props}
+    />
+  ),
+);
+Input.displayName = "Input";
+// Import specific primitives to enable live switching in the showcase
+// import { ShadcnSidebar, ShadcnButton, ShadcnTable, ShadcnInput, ShadcnForm, ShadcnCard, AntdSidebar, AntdButton, AntdTable, AntdInput, AntdForm, AntdCard } from "./primitives";
 
 export default function App() {
   const [activeLibrary, setActiveLibrary] = useState("shadcn");
@@ -290,6 +318,65 @@ export default function App() {
                   Active route: /{activeSidebarItem}
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Dialog Section */}
+        <section>
+          <div className="mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div className="text-2xl font-bold flex items-center gap-2">
+              Dialog Component
+            </div>
+          </div>
+
+          <div className="flex gap-4 flex-wrap">
+            {/* Dialog 1 */}
+            <ProfileDialog />
+
+            {/* Dialog 2 */}
+            <StickyFooterDialog />
+
+            {/* Dialog 3 */}
+            <DialogCloseButton />
+
+            {/* Dialog 4 */}
+            <DialogNoCloseButton />
+          </div>
+        </section>
+
+        {/* Drop Down Section */}
+        <section>
+          <div className="mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div className="text-2xl font-bold flex items-center gap-2">
+              Drop Down Component
+            </div>
+          </div>
+          <DropDown />
+        </section>
+
+        {/* Tabs Component Section */}
+        <section>
+          <div className="mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              Tabs Component
+            </h2>
+            <p className="text-slate-500 text-sm mt-1">
+              Supports line tabs, vertical tabs, and disabled state configurations.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-4">
+              <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Line Tabs</h3>
+              <TabsLine />
+            </div>
+            <div className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-4">
+              <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Disabled Tabs</h3>
+              <TabsDisabled />
+            </div>
+            <div className="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-4 md:col-span-2">
+              <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Vertical Tabs</h3>
+              <TabsVertical />
             </div>
           </div>
         </section>

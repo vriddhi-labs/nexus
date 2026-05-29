@@ -6,3 +6,6 @@ export { Table } from "./shadcn/Table";
 export { Input } from "./shadcn/Input";
 export { Form } from "./shadcn/Form";
 export { Card } from "./shadcn/Card";
+export * from "./shadcn/Dialog";
+export * from "./shadcn/Dropdown";
+export * from "./shadcn/Tabs";

@@ -32,6 +32,11 @@ function generateThemeSwitch(chosenLibrary) {
     fileContent += `export { ${comp} } from "./${chosenLibrary}/${comp}";\n`;
   });
 
+  const dialogFile = chosenLibrary === 'antd' ? 'Modal' : 'Dialog';
+  fileContent += `export * from "./${chosenLibrary}/${dialogFile}";\n`;
+  fileContent += `export * from "./${chosenLibrary}/Dropdown";\n`;
+  fileContent += `export * from "./${chosenLibrary}/Tabs";\n`;
+
   const dir = path.dirname(THEME_OUTPUT);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
